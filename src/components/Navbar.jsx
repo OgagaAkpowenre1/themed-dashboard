@@ -20,15 +20,34 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
       <span
         className="absolute inline-flex rounded-full h-2 w-2 right-2 top-2"
         style={{ background: dotColor }}
-      >
+      />
         {icon}
-      </span>
     </button>
   </TooltipComponent>
 );
 
 export default function Navbar() {
-  const { activeMenu, setActiveMenu, isClicked, setIsClicked } = useStateContext();
+  const { activeMenu, setActiveMenu, isClicked, setIsClicked, handleClick, screenSize, setScreenSize } =
+    useStateContext();
+
+  useEffect(() => {
+    const handleResize = () => setScreenSize(window.innerWidth);
+
+    window.addEventListener("resize", handleResize);
+
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (screenSize <= 900) {
+      setActiveMenu(false);
+    } else {
+      setActiveMenu(true);
+    }
+  }, [screenSize]);
+
   return (
     <div className="flex justify-between p-2 md:mx-6 relative">
       <NavButton
@@ -61,21 +80,26 @@ export default function Navbar() {
         />
 
         <NavButton
-          title={"Notifications"}
+          title={"Notification"}
           dotColor={"#03C9D7"}
           customFunc={() => {
-            handleClick("notifications");
+            handleClick("notification");
           }}
           color={"blue"}
           icon={<RiNotification3Line />}
         />
 
-        <TooltipComponent content={'User Profile'} position="BottomCenter">
-          <div className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg" onClick={() => handleClick('userProfile')}>
+        <TooltipComponent content={"User Profile"} position="BottomCenter">
+          <div
+            className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
+            onClick={() => handleClick("userProfile")}
+          >
             <img src={avatar} className="rounded-full w-8 h-8 " />
             <p>
-              <span className="text-gray-400 text-14">Hi, </span> {' '}
-              <span className="text-gray-400 text-14 font-bold ml-1">Daniel</span>
+              <span className="text-gray-400 text-14">Hi, </span>{" "}
+              <span className="text-gray-400 text-14 font-bold ml-1">
+                Daniel
+              </span>
             </p>
             <MdKeyboardArrowDown className="text-gray-400 text-14" />
           </div>
