@@ -2,7 +2,6 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { FiSettings } from "react-icons/fi";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
-import { useState } from "react";
 import { Navbar, Footer, Sidebar, ThemeSettings } from "./components";
 import {
   ECommerce,
@@ -20,10 +19,12 @@ import {
   Financial,
   ColorPicker,
   Customers,
+  Bar
 } from "./pages";
+import { useStateContext } from "./contexts/ContextProvider";
 
 function App() {
-  const [activeMenu, setActiveMenu] = useState(false);
+  const {activeMenu} = useStateContext()
   return (
     <div>
       <BrowserRouter>
