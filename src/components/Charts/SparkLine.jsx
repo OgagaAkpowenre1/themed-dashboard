@@ -25,8 +25,16 @@ export default function SparkLine({
       border={{ color: currentColor, width: 2 }}
       dataSource={data}
       xName="x"
-      yName="y"
+      yName="yval"
       type={type}
+      tooltipSettings={{
+        visible: true,
+        // eslint-disable-next-line no-template-curly-in-string
+        format: "${x} : data ${yval}",
+        trackLineSettings: {
+          visible: true,
+        },
+      }}
     >
       <Inject services={[SparklineTooltip]} />
     </SparklineComponent>
