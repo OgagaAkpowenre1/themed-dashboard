@@ -95,7 +95,7 @@ export default function ECommerce() {
               </div>
 
               <div className="mt-5">
-                {/* <SparkLine
+                <SparkLine
                   currentColor="blue"
                   id="line-sparkline"
                   type="Line"
@@ -103,10 +103,7 @@ export default function ECommerce() {
                   width="250px"
                   data={SparklineAreaData}
                   color="blue"
-                /> */}
-                <div className="flex items-center justify-center overflow-hidden m-5">
-                <h2>Pretend there is a cool looking chart here</h2>
-                </div>
+                />
               </div>
               <div className="mt-10">
                 <Button color={'white'} bgColor={'blue'} text={'Download Report'} borderRadius={'10px'} />
