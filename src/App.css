@@ -575,3 +575,7 @@ video {
 .underline{
   text-decoration-line: underline;
 }
+
+.bg-hero-pattern{
+  background-image: url('./data/welcome-bg.svg');
+}
