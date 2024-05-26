@@ -8,6 +8,7 @@ import {
   ecomPieChartData,
 } from "../data/dummy";
 import { useStateContext } from "../contexts/ContextProvider";
+import NivoLine from "../components/Charts/nivoLine";
 
 export default function ECommerce() {
   return (
@@ -94,8 +95,8 @@ export default function ECommerce() {
                 <p className="text-gray-500 mt-1">Expense</p>
               </div>
 
-              <div className="mt-5">
-                {/* <SparkLine
+              <div className="mt-5 h-7 w-7">
+                <SparkLine
                   currentColor="blue"
                   id="line-sparkline"
                   type="Line"
@@ -103,10 +104,8 @@ export default function ECommerce() {
                   width="250px"
                   data={SparklineAreaData}
                   color="blue"
-                /> */}
-                <div className="flex items-center justify-center overflow-hidden m-5">
-                <h2>Pretend there is a cool looking chart here</h2>
-                </div>
+                />
+                {/* <NivoLine /> */}
               </div>
               <div className="mt-10">
                 <Button color={'white'} bgColor={'blue'} text={'Download Report'} borderRadius={'10px'} />
